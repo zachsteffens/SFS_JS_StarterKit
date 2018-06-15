@@ -61,3 +61,9 @@ BUNDLING:
 			Note: webpack does not generate any physical files, it serves from memory.
 *				ALSO - Check out Webpack Fundamentals by Joe Eames on pluralsight for a deep dive
 
+SOURCEMAPS: for debugging transpiled and bundled code
+	-maps code back to original source
+	-generate them as part of the build
+	-only downloaded when the user opens the developer tools!
+	-to set breakpoints open up the dev tools and on the left sidebar there should be a tree item for the website and one for webpack. expand webpack and you should see all the original js code.
+
