@@ -1,0 +1,63 @@
+The purpose of this project is to kickstart any new projects with a comon environment for our dev team so we can jump right in and start developing.
+
+this project should address the following needs:
+	Package management
+	Bundling
+	Minification
+	Sourcemaps
+	Transpiling
+	Dynamic HTML Generation
+	Centralized HTTP
+	Mock API framework
+	Common Libraries
+	Dev web server
+	Linting
+	Automated Testing
+	Continuous Integration
+	Automated Build
+	Automated Deployment
+	Working Example App
+
+Common editor environment settings (requires plugin for atom and vsCode)
+*	https://editorconfig.org/
+
+THINGS TO CONSIDER FOR FUTURE PROJECTS:
+	Sharing development work outside a local network: localtunel, ngrok, now, Surge
+		-note: these would be great tools to leverage if you dont need to hit an api or if that api does not care about where the requests are originating from (cors security)
+
+	gulp vs npmScripts
+		- gulp plugins are typically abstractions of npm packages. (if there is a bug in eslint, you would have to wait for esling to be updated and then gulp-eslint to be updated as well.)
+		- https://medium.freecodecamp.org/why-i-left-gulp-and-grunt-for-npm-scripts-3d6853dd22b8
+
+*	npmScripts notes:
+		- all defined tasks can also have "pre" and "post" hooks. so for instance, you create a script with the tag "start" if you define another script with the tag "prestart". When you run "npm start" the prescript will execute first
+		- example: npm start -s (silent mode, will get significantly less output to the console. at the minimum this removes the echoed command output that would normally show)
+
+TRANSPILING: Allows you to use the latest version of JS (ES6 or greater) and this code will be transpiled down to ES5 for environments that dont yet support the newest versions of JS (like IE...)
+	(this tabel illustrates why we should transpile https://kangax.github.io/compat-table/es6/ specifically the IE11 column)
+	Typescript vs Babel
+		Typescript: enhanced autocomplete, enhanced readability, safer refactoring, additional non-standard features (interfaces)
+*		Babel: write standardized js, leverage full JS Ecosystem, use experimental features earlier, no type defs or annotations required
+		NOTE: The Code and Build Scripts in this project are transplied with Babel
+
+BUNDLING:
+	module formats: AMD, CommonJS,UMD, ES6Modules, IIFE (immediately invoked function expressions)
+*		ES6 MODULES should be considered the preferred method for encapsulating our code
+			WHY? It's standardized
+				 It's statically analyzable
+				 	-improved auto complete
+					-intelligent refactoring
+					-fails fast
+					-tree shaking (identifying unused code that can be eliminated)
+				It's easy to read
+					-named "imports"
+					-default "exports"
+	bundlers: bundle code into a single minified file
+		-Browserify, Webpack, Rollup, JSPM
+*		WEBPACK should be considered the preferred method although rollup is gaining support in the community
+			Why: Bundle splitting (deliver portions of js that only relate to the page you're loading)
+				Hot Module Reloading (make a change and it auto reloaded in place without refreshing the page?)
+				Tree Shaking
+			Note: webpack does not generate any physical files, it serves from memory.
+*				ALSO - Check out Webpack Fundamentals by Joe Eames on pluralsight for a deep dive
+
