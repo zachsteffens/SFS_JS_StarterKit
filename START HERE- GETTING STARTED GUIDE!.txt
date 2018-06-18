@@ -49,7 +49,7 @@ BUNDLING:
 					-intelligent refactoring
 					-fails fast
 					-tree shaking (identifying unused code that can be eliminated)
-				It's easy to read
+				 It's easy to read
 					-named "imports"
 					-default "exports"
 	bundlers: bundle code into a single minified file
@@ -67,3 +67,35 @@ SOURCEMAPS: for debugging transpiled and bundled code
 	-only downloaded when the user opens the developer tools!
 	-to set breakpoints open up the dev tools and on the left sidebar there should be a tree item for the website and one for webpack. expand webpack and you should see all the original js code.
 
+LINTING
+	-ESLInt
+		-check out eslint plugins like eslint-plugin-angular
+		-also look at http://github.com/dustinspecker/awesome-eslint  it's a good resource for everything eslint
+		-file watching: eslint-watch npm package to relint code and can be run via an npm script example: "esw webpack.config.* src buildscripts" This calls eslint watch and lints the webpack files everything in source/ and everything in buildScripts/
+		-!NOTE: does not lint experimental features(this is not likely to be a problem unless we start leveraging bleeding edge features of JS)
+
+TESTING (automated-unit)
+    -6 key decisions
+        -framework
+**          -Mocha
+*           -Jasmine
+            -Tape
+            -QUnit
+            -AVA
+*           -Jest
+        -assertion library (declare what you expect: expect(4+2).to.equal(4))
+*           -chai
+            -should.js
+            -expect
+        -helper Libraries
+            -JSDOM -run dom related tests without a browser
+            -cheerio - query virtual DOM using jQuery selectors
+        -where to run tests
+            -Browser - Karma, Testem (more overhead because you have to set them up)
+            -headless browser - PhantomJS
+*           -In-memory DOM - JSDOM (lighter weight than phantomJS)
+        -where to place tests
+            -Centralized
+*           -Alongside - system.js & system.spec.js in the same folder
+        -when to run tests
+            -run everytime you hit save

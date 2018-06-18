@@ -1,0 +1,128 @@
+{
+	"root": true,
+	"extends": [
+		"eslint:recommended",
+		"plugin:import/errors",
+		"plugin:import/warnings"
+	],
+	"parserOptions": {
+		"ecmaVersion": 7,
+		"sourceType": "module"
+	},
+	"env": {
+		"browser": true,
+		"node": true,
+		"jquery": true,
+		"mocha": true
+	},
+	"globals": {
+		"angular": false
+	},
+	"rules": {
+		"no-console": 1,
+		"no-bitwise": 2,
+		"camelcase": [
+			2,
+			{
+				"properties": "never"
+			}
+		],
+		"curly": [
+			2,
+			"all"
+		],
+		"eqeqeq": 2,
+		"guard-for-in": 2,
+		"no-extend-native": 2,
+		"wrap-iife": 2,
+		"indent": [
+			2,
+			4,
+			{
+				"SwitchCase": 1
+			}
+		],
+		"no-use-before-define": [2, "nofunc"],
+		"new-cap": 2,
+		"no-caller": 2,
+		"no-empty": 0,
+		"no-irregular-whitespace": 0,
+		"no-new": 2,
+		"no-plusplus": 0,
+		"quotes": [
+			2,
+			"single"
+		],
+		"no-undef": 2,
+		"no-unused-vars": 0,
+		"strict": 0,
+		"max-params": [
+			2,
+			20
+		],
+		"max-depth": [
+			2,
+			5
+		],
+		"max-statements": [
+			2,
+			200
+		],
+		"complexity": [
+			2,
+			15
+		],
+		"semi": 1,
+		"no-cond-assign": 0,
+		"no-debugger": 0,
+		"no-eq-null": 2,
+		"no-eval": 0,
+		"no-unused-expressions": 0,
+		"block-scoped-var": 0,
+		"no-iterator": 0,
+		"linebreak-style": 0,
+		"comma-style": 0,
+		"no-loop-func": 2,
+		"no-multi-str": 2,
+		"valid-typeof": 0,
+		"no-proto": 0,
+		"no-script-url": 0,
+		"no-shadow": 2,
+		"dot-notation": 0,
+		"no-new-func": 0,
+		"no-new-wrappers": 0,
+		"no-invalid-this": 0,
+		"require-yield": 0,
+		"operator-linebreak": [
+			2,
+			"after"
+		],
+		"no-mixed-spaces-and-tabs": 2,
+		"no-trailing-spaces": 2,
+		"space-unary-ops": 0,
+		"one-var": 0,
+		"space-return-throw-case": 0,
+		"keyword-spacing": 2,
+		"space-infix-ops": 2,
+		"space-before-blocks": [
+			2,
+			"always"
+		],
+		"eol-last": 2,
+		"array-bracket-spacing": [
+			2,
+			"never",
+			{
+				"singleValue": true
+			}
+		],
+		"space-in-parens": [
+			2,
+			"never"
+		],
+		"valid-jsdoc": 2,
+		"no-multiple-empty-lines": 2,
+		"no-underscore-dangle": 0,
+		"comma-dangle": 0
+	}
+}
