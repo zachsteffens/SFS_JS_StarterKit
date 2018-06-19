@@ -99,3 +99,8 @@ TESTING (automated-unit)
 *           -Alongside - system.js & system.spec.js in the same folder
         -when to run tests
             -run everytime you hit save
+
+JS Continuous Integration
+    -travisCI - tight integration with github, linux based
+    -Appveyor - windows based
+    -Jenkins
