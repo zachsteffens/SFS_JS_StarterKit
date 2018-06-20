@@ -101,6 +101,6 @@ TESTING (automated-unit)
             -run everytime you hit save
 
 JS Continuous Integration
-    -travisCI - tight integration with github, linux based
+    -travisCI - tight integration with github, linux based travis-ci.org. easy automated testing and linting on checkin
     -Appveyor - windows based
     -Jenkins
