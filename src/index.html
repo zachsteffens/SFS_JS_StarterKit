@@ -2,10 +2,25 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <!-- this is EJS -->
+        <% if (htmlWebpackPlugin.options.someVariable) { %>
+            <!-- add some conditional html that will only be included if "someVariable" exists in the webpack.config -->
+            <!-- '<%=htmlWebpackPlugin.options.someVariable %>'-->
+        <% } %>
+
     </head>
     <body>
-		<h1>hi world</h1>
-		<!-- note! this references bundle.js instead of index.js. that's because we bundled all the js together into bundle.js -->
-		<script src="bundle.js"></script>
+        <h1>Users</h1>
+        <table>
+            <thead>
+                <th>&nbsp;</th>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </thead>
+            <tbody id="users">
+            </tbody>
+        </table>
     </body>
 </html>

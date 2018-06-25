@@ -104,3 +104,101 @@ JS Continuous Integration
     -travisCI - tight integration with github, linux based travis-ci.org. easy automated testing and linting on checkin
     -Appveyor - windows based
     -Jenkins
+HTTP calls
+    -making http calls
+        -node:
+*       -browser:
+            Options for performing http requests:
+                -XHR (xmlHttpRequest)
+                -jQuery($ajax)
+                -Framework based (angular)
+**              -Fetch (soon to be native in browsers, accomplished with a polyfill)
+            NOTES: Selective Polyfilling
+                -polyfill.io will return only polyfills that the user agent requires (depending on if the feature is supported on that browser)
+                    fetch example: <script src="https://cdn.polyfill.io/v2/polyfill.js?features=fetch"></script>
+
+        -node & browser: isomorphic fetch, xhr, superagent, axios
+    -notes:
+        -make sure to centralize all http calls in one location
+            -handle preloader logic: e.g. show a spinner
+            -handle errors
+            -single seam for mocking
+
+    -mocking http calls (did not complete this section of the course. revist the course if you want to rely heavily on mocking)
+        -why mock
+            -unit testing
+            -instant response
+            -keep working when services are down
+            -rapid prototyping
+            -avoid inter-team bottlenecks
+            -work offline
+        -approaches/services
+            -Nock - good for unit testing
+            -static JSON
+            -create a dev webserver to return mocked data
+                -api-mock
+                -JSON server
+                -JSON schema faker
+                -express api
+
+        -generate mock data and mock api
+            declare our schema
+                -json schema faker
+            generate random data
+                -faker.js
+                -chance.js
+                -randexp.js
+
+PROJECT STRUCTURE
+    -INCLUDE A DEMO APPLICATION
+        -shows examples: directory structure and file naming, framework usage, testing, mock api, working automated deployment
+        -Codifies decisions
+        -interactive example of working with a starter
+
+    -PROJECT STRUCTURE TIPS
+        -js belongs in a .js file. if you dont, you cant leverage babel, linting, testing, reuse, import implicit dependencies
+        -consider organizing by feature as opposed to by filetype
+        -Extract Logic into Plain Old Javascript Objects- strive to do as much as you can with no framework specific code- helps minimize impact of changing frameworks...
+            -an example of this philosophy: react-slingshot project on github.
+
+PRODUCTION BUILDS
+    -Minification
+        -speed page loads and reduces bandwidth
+*       -TreeShaking (in webpack 2)
+    -Referencing Bundled Assets in HTML
+        -hardcoding: e.g. <body><script src="bundle.js"></script></body>
+        -mainpulate via node
+        -html-webpack-plugin: simplifies the creation of your apps html file. templates, helps with cache busting
+            -can also minify html do decrease bandwidth
+    -Sourcemaps for debugging in PRODUCTION
+    -Dynamic HTML
+        -html-webpack-plugin: simplifies the creation of your apps html file. templates, helps with cache busting
+            -can also minify html do decrease bandwidth
+    -Cache busting
+        -save http requests
+        -force request for latest version
+        PLAN:
+            -hash the bundle filename
+            -generate HTML dynamically
+*       Investigate: have webserver send farfuture headers for js resources
+        Webpack MD5 hash: generates a hash value based on your js that will only change if your js changes
+    -Bundle splitting
+        -speed page loads for accessing specific areas of the application (e.g. only downloading what they need for that page)
+        -avoid re-downloading all libraries. only download changed js bundles
+        Tools:
+            -Add extra entries into the webpack.config.prod to separate vendor chunks/bundles
+            -commons chunk plugins: moves modules that occur in multiple chunks/bundles into a new chunk/bundle
+                -if you refrence a tool in the js and in the vendors.js entry in the webpack config, it will only be added to the vendor.js Thus reducing the size of the app.js file
+    -Extract and Minify CSS
+
+    -Error Logging: all of these are paid tools. Since these are paid services, I am not setting this up for this example project.
+        tools for error logging:
+*           -TrackJS
+            -Sentry
+            -New Relic
+            -Raygun
+    HTML Templates based on environment: usefull for conditionally adding JS for specific deployment environment (e.g. in prod but not dev)
+        (NOTE this is not demonstrated in this project)
+        -EJS: embededjs.org
+            -
+

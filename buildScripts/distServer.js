@@ -3,22 +3,17 @@
 import express from 'express';
 import path from 'path';
 import open from 'open';
-import webpack from 'webpack';
-import config from '../webpack.config.dev';
-
+import compression from 'compression';
 /* eslint-disable no-console */
 
 const port = 12000;
 const app = express();
-const compiler = webpack(config);
 
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
-}));
+app.use(compression());
+app.use(express.static('dist'));
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, '../src/index.html'));
+    res.sendFile(path.join(__dirname, '../dist/index.html'));
 });
 
 app.get('/users', function(req, res) {
@@ -29,7 +24,6 @@ app.get('/users', function(req, res) {
         {'id': 3, 'firstName':'Tina', 'lastName':'Lee','email':'Lee.tina@hotmail.com'}
     ]);
 });
-
 
 app.listen(port, function (err) {
     if (err) {
